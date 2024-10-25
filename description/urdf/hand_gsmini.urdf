@@ -54,13 +54,13 @@
   </link>
   <link name="gsmini_left">
     <visual>
-      <origin rpy="0 -1.570796327 3.141592653589793" xyz="0 0 0"/>
+      <origin rpy="-1.570796327 -1.570796327 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="package://urdf_rviz_display/franka_panda_description/meshes/visual/gsmini.dae"/>
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0 -1.570796327 3.141592653589793" xyz="0 0 0"/>
+      <origin rpy="-1.570796327 -1.570796327 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="package://urdf_rviz_display/franka_panda_description/meshes/collision/gsmini.stl"/>
       </geometry>
@@ -68,13 +68,13 @@
   </link>
   <link name="gsmini_right">
     <visual>
-      <origin rpy="0 1.570796327 0" xyz="0 0 0"/>
+      <origin rpy="1.570796327 1.570796327 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="package://urdf_rviz_display/franka_panda_description/meshes/visual/gsmini.dae"/>
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0 1.570796327 0" xyz="0 0 0"/>
+      <origin rpy="1.570796327 1.570796327 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="package://urdf_rviz_display/franka_panda_description/meshes/collision/gsmini.stl"/>
       </geometry>
@@ -106,11 +106,11 @@
   <joint name="finger_gsmini_joint_left" type="fixed">
     <parent link="panda_left_adapt_finger"/>
     <child link="gsmini_left"/>
-    <origin rpy="0 0 0" xyz="0 0.0120 0.0600"/>
+    <origin rpy="0 0 -1.570796327" xyz="0 0.0120 0.0600"/>
   </joint>
   <joint name="finger_gsmini_joint_right" type="fixed">
     <parent link="panda_right_adapt_finger"/>
     <child link="gsmini_right"/>
-    <origin rpy="0 0 0" xyz="0 -0.0120 0.0600"/>
+    <origin rpy="0 0 1.570796327" xyz="0 -0.0120 0.0600"/>
   </joint>
 </robot>
