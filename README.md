@@ -11,10 +11,11 @@ For now, the combined part is only hand+finger+gelsight mini for minimal researc
 ## Usage
 - The ready-to-use URDF files are in folder `description/urdf/`:
   - The `hand_origin.urdf` is **auto-generated** through `description/xacro/cv2urdf.py` and represents the original franka_panda.
-  - The `hand_gemini.urdf` is **manual-adjusted** to replace original finger to adapter finger and add gelsight mini.
-- For usage **inside rviz or ros-related env**, please replace `package://urdf_rviz_display` in the URDF to your customized package name!
-- For usage **outside ros-related env**, please replace `package://urdf_rviz_display` in the URDF to the relative path!
+  - The `hand_gemini.urdf` and `hand_gemini_ros.urdf` is **manual-adjusted** to replace original finger to adapter finger and add gelsight mini. The difference between them is path reference approach for different env.
+    - For usage **inside rviz or ros-related env**, please refer to `hand_gemini_ros.urdf` and replace `package://urdf_rviz_display` in the URDF to your customized package name!
+    - For usage **outside ros-related env**, please refer to `hand_gemini.urdf`, which use relative path as file reference.
+- `gsmini_panda_hand.py` is used for controlling `gsmini_panda_hand` in pybullet environment, which is intergrated to TACTO ENV for tactile sensing.
 
 ## TODO
 - [x] Adjust to adapt in RVIZ ENV
-- [ ] Adjust to adapt in TACTO ENV
+- [x] Adjust to adapt in TACTO ENV
