@@ -1,0 +1,16 @@
+<robot name="gsmini">
+    <link concave="yes" name="gsmini">
+        <visual>
+            <origin rpy="0 0 -1.570796327" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="../meshes/collision/gsmini.stl"/>
+            </geometry>
+        </visual>
+        <collision concave="yes">
+            <origin rpy="0 0 -1.570796327" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="../meshes/collision/gsmini.stl"/>
+            </geometry>
+        </collision>
+    </link>
+</robot>
