@@ -1,5 +1,13 @@
 <?xml version="1.0" ?>
 <robot name="hand">
+  <link name="dummylink">
+    <visual>
+      <geometry>
+          <cylinder length="0.01" radius="0.005"/> 
+      </geometry>
+    </visual>
+  </link>
+
   <link name="panda_hand">
     <visual>
       <geometry>
@@ -11,11 +19,6 @@
         <mesh filename="../meshes/collision/hand.stl"/>
       </geometry>
     </collision>
-    <inertial>
-      <origin rpy="0 0 0" xyz="0 0.0015244 0.0275912"/>
-      <mass value="0.73"/>
-      <inertia ixx="0.00278560230025" ixy="0.0" ixz="0.0" iyy="0.000400033405336" iyz="0.0" izz="0.00256378041832"/>
-    </inertial>
   </link>
   <link name="panda_left_adapt_finger">
     <visual>
@@ -45,42 +48,49 @@
       </geometry>
     </collision>
   </link>
-  <link concave="yes" name="gsmini_left">
+  <link name="gsmini_left">
     <visual>
       <origin rpy="-1.570796327 -1.570796327 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="../meshes/collision/gsmini.stl"/>
       </geometry>
     </visual>
-    <collision concave="yes">
+    <collision>
       <origin rpy="-1.570796327 -1.570796327 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="../meshes/collision/gsmini.stl"/>
       </geometry>
     </collision>
   </link>
-  <link concave="yes" name="gsmini_right">
+  <link name="gsmini_right">
     <visual>
       <origin rpy="1.570796327 1.570796327 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="../meshes/collision/gsmini.stl"/>
       </geometry>
     </visual>
-    <collision concave="yes">
+    <collision >
       <origin rpy="1.570796327 1.570796327 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="../meshes/collision/gsmini.stl"/>
       </geometry>
     </collision>
   </link>
-  
+
+  <joint name="dummyjoint" type="prismatic">
+    <parent link="dummylink"/>
+    <child link="panda_hand"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/> 
+    <limit lower="-0.0001" upper="0.0001" effort="100" velocity="0.001"/> 
+  </joint>  
+
   <joint name="panda_finger_joint_left" type="prismatic">
     <parent link="panda_hand"/>
     <child link="panda_left_adapt_finger"/>
-    <!-- <origin rpy="0 0 0" xyz="-0.0149 (0.0064 - 0.0063) (0.0962 + 0.0584)"/> -->
     <origin rpy="0 0 0" xyz="0 0.04 0.1546"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="70" lower="0.0" upper="0.04" velocity="0.2"/>
+    <limit effort="100" lower="0.0" upper="0.04" velocity="0.2"/>
     <dynamics damping="500.0" friction="100"/>
   </joint>
   <joint name="panda_finger_joint_right" type="prismatic">
@@ -88,7 +98,7 @@
     <child link="panda_right_adapt_finger"/>
     <origin rpy="0 0 0" xyz="0 -0.04 0.1546"/>
     <axis xyz="0 1 0"/>
-    <limit effort="70" lower="0.0" upper="0.04" velocity="0.2"/>
+    <limit effort="100" lower="0.0" upper="0.04" velocity="0.2"/>
     <dynamics damping="500.0" friction="100"/>
     <!-- <mimic joint="panda_finger_joint_left"/> -->
   </joint>
@@ -102,4 +112,5 @@
     <child link="gsmini_right"/>
     <origin rpy="0 0 1.570796327" xyz="0 -0.02315 -0.01675"/>
   </joint>
+
 </robot>
